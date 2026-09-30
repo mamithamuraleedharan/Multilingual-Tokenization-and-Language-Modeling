@@ -1,0 +1,25 @@
+## Predictions
+
+I expect to see more tokens for English as compared to others and the least for Chinese. Not knowing how chinese works, i translated some sentences and words to chinese and noticed that, it uses less characters than english. 
+For example the word unhappiness which contains 11 characters becomes 不快乐 which have only 3 characters. The same was the cases with long sentences.
+
+Also, i expect BPE to learn the best for Turkish as it seems to be morphologically richer than other languages. I also think it will struggle with learning Chinese
+
+I expect the BPE tokenizer with a relatively small vocabulary to work better than the one with larger vocabulary. When the vocabulary is small, words like unhapiness gets broken into un,happi,ness whereas it could be one token in a large vocabulary. So the model gets trained on these individual pieces and can recognize these individual pieces for a new word with the same prefix or suffice. For a larger vocabulary, the model cannot relate to a new word that shares the similar prefix or suffix.
+
+## Initial Observations
+
+The training data have a combined vocabulary of 9443 unique characters across the 3 languages. 
+Summing each language's individual count gives 10404 , meaning aroung 1000 characters are shared across the dataset. This could be numbers, punctuations etc.
+
+## Implementation Notes
+
+I have build a character level tokenizer using training data consisting of 2 dictionaries which maps Character:ID and visa versa. 
+Additionaly an item is added to the dictionary as <UNK> : 0 and 0 :<UNK> for characters not seen during training.
+
+Eg :
+
+Sentence : Jag träffar mina vänner🎉
+Encoded : [41, 59, 65, 2, 78, 76, 131, 64, 64, 59, 76, 2, 71, 67, 72, 59, 2, 80, 131, 72, 72, 63, 76, 0]
+Decoded : Jag träffar mina vänner<UNK>
+
