@@ -45,9 +45,11 @@ file_names = ["en.txt","tr.txt","zh.txt"]
 file_path = Path("Data/train/")
 ch_id_dict,id_ch_dict = build_char_vocab(file_names,file_path)
 
-#sentence1 = "The cat sat on the mat"
-#sentence2 = "Jag träffar mina vänner🎉"
-#encoded =  char_encode(sentence1,ch_id_dict)
-#print(f"Encoded : {encoded}")
-#decoded=  char_decode(encoded,id_ch_dict)
-#print(f"Decoded : {decoded}")
+"""
+sentence1 = "The cat sat on the mat"
+sentence2 = "Jag träffar mina vänner🎉"
+encoded =  char_encode(sentence1,ch_id_dict)
+print(f"Encoded : {encoded}")
+decoded=  char_decode(encoded,id_ch_dict)
+print(f"Decoded : {decoded}")
+"""

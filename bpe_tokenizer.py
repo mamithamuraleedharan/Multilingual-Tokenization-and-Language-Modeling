@@ -32,6 +32,7 @@ large_vocab_size = 10000
 small_bpe_tokenizer = bpe_load_tokenizer(small_save_path)
 large_bpe_tokenizer = bpe_load_tokenizer(large_save_path)
 
+"""
 sentences = {
     "English":"I am Loki of Asgard, and I am burdened with glorious purpose",
     "Turkish":"Ben Asgardlı Loki’yim ve yüce bir amaçla yükümlüyüm",
@@ -52,3 +53,4 @@ for key,value in sentences.items():
     print("IDs:", large_output.ids)
     print("Number of tokens:", len(large_output.tokens))
     print("--------------------------------")
+"""
