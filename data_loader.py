@@ -1,6 +1,8 @@
 from pathlib import Path
 from char_tokenizer import char_encode
 import torch
+from torch.utils.data import TensorDataset,DataLoader
+
 
 def load_id(folder,file_names,tokenizer_type,tokenizer):
     id_list = []
@@ -23,3 +25,7 @@ def chunking(ids,chunk_size):
     inputs = ids[0:n*chunk_size].view(n,chunk_size)
     targets = ids[1:n*chunk_size+1].view(n,chunk_size)
     return inputs,targets
+
+def loading(inputs,targets,batch_size,shuffle):
+    dataset = TensorDataset(inputs,targets)
+    return DataLoader(dataset,batch_size=batch_size,shuffle=shuffle)
