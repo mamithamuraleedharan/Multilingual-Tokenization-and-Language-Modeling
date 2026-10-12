@@ -10,7 +10,7 @@ Training a small decoder only transformer model for each tokenizer
 3. transformer.py
 4. data_loader.py
 5. Multilingual_Tokenization_Language_Modeling.ipynb
-6. #### Work in progress
+6. train.py - Work in progress
 
 ## Data
 
