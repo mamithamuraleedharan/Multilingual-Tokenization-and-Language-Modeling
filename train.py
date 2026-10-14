@@ -8,6 +8,7 @@ from torch import nn
 from transformer import Transformer
 import time
 import json
+import argparse
 
 data_directory = Path(__file__).parent/"Data"
 # data_directory = Path("/srv/data/lt2326-h26/a1")
@@ -99,23 +100,32 @@ def train(model,train_loader,valid_loader,loss_fn,optimizer,device, vocab_size,e
     with open(f"runs/{name}_history.json","w") as f:
         json.dump({"train_loss": train_losses,"val_loss": val_losses},f)
 
-        
+def main():
 
-if __name__ == "__main__":
-
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--tokenizer",choices=["char","small_bpe","large_bpe"])
+    parser.add_argument("--epochs",type = int,default = 20 )
+    args = parser.parse_args()   
+    
     torch.manual_seed(0)
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print("Device:", device)
 
-    train_loader,valid_loader,vocab_size = get_data("small_bpe",data_directory,32)
-    model = Transformer(vocab_size=vocab_size,hidden_dim=256,seq_len=chunk_size,num_heads=4,forward_dim=1024,num_layers=2, dropout=0.1).to(device)
+    train_loader,valid_loader,vocab_size = get_data(args.tokenizer,data_directory,32)
+    model = Transformer(vocab_size=vocab_size,hidden_dim=256,seq_len=chunk_size,num_heads=4,forward_dim=1024, num_layers=2,dropout=0.1).to(device)
+   
     loss_fn = nn.CrossEntropyLoss()
     optimizer = torch.optim.AdamW(model.parameters(),lr=3e-4)
 
-    print("untrained valid loss:",evaluate(model,valid_loader,loss_fn,device,vocab_size),"|random loss:", math.log(vocab_size))
+    print("untrained valid loss:",evaluate(model,valid_loader,loss_fn,device,vocab_size),"| random loss:", math.log(vocab_size))
 
-    train(model,train_loader,valid_loader,loss_fn,optimizer,device,vocab_size,epochs=20,name="trial_small_bpe")
+    train(model,train_loader,valid_loader,loss_fn,optimizer,device,vocab_size,args.epochs,args.tokenizer)
+
+if __name__ == "__main__":
+    main()
+
+    
 
 
 
