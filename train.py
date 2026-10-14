@@ -6,6 +6,7 @@ import math
 import torch
 from torch import nn
 from transformer import Transformer
+import time
 
 data_directory = Path(__file__).parent/"Data"
 # data_directory = Path("/srv/data/lt2326-h26/a1")
@@ -53,9 +54,39 @@ def evaluate(model,loader,loss_fn,device,vocab_size):
     avg_loss = total_loss/len(loader)
     return avg_loss
 
+def train_one_epoch(model, loader, loss_fn, optimizer, device, vocab_size,max_batches=None, printforevery=200):
+    model.train()
+    total_loss = 0
+    total_tokens = 0
+    progress_loss = 0
+    
+    for i,(x,y) in enumerate(loader):
+        if max_batches is not None and i >= max_batches:
+            break
+        x = x.to(device)
+        y = y.to(device)
+        
+        optimizer.zero_grad() # Zero your gradients for every batch!
+        output = model(x) # Make predictions for this batch
+        loss = loss_fn(output.reshape(-1, vocab_size), y.reshape(-1))
+        loss.backward() # Compute the loss and its gradients
+        optimizer.step()  # Adjust learning weights
+        
+        total_loss += loss.item() * y.numel()
+        total_tokens += y.numel()
+        progress_loss += loss.item()
+        if (i + 1) % printforevery == 0:
+            print(f" batch {i + 1}/{len(loader)} loss: {progress_loss/printforevery:.3f}")
+            progress_loss = 0.0
+    return total_loss/total_tokens  
+        
+        
+    
+    
     
 
 if __name__ == "__main__":
+
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print("Device:", device)
 
@@ -65,6 +96,18 @@ if __name__ == "__main__":
 
     print("untrained valid loss:", evaluate(model,valid_loader,loss_fn,device,vocab_size))
     print("random loss :", math.log(vocab_size))
+    
+    optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4)
+    start = time.time()
+
+    train_loss = train_one_epoch(model,train_loader,loss_fn,optimizer,device,vocab_size,max_batches=50)
+
+    seconds = time.time() - start
+
+    print(f"Average train loss over the first 50 batches = {train_loss:.3f}")
+    print(f"Time for 50 batches = {seconds:.1f}s")
+    print(f"Estimated time for one full epoch ({len(train_loader)} batches) = "f"{seconds * len(train_loader) / 50 / 60:.1f} minutes")
+    print(f"Validation loss after 50 steps = "f"{evaluate(model, valid_loader, loss_fn, device, vocab_size):.3f}")
 
 
 
