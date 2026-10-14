@@ -7,6 +7,7 @@ import torch
 from torch import nn
 from transformer import Transformer
 import time
+import json
 
 data_directory = Path(__file__).parent/"Data"
 # data_directory = Path("/srv/data/lt2326-h26/a1")
@@ -80,34 +81,41 @@ def train_one_epoch(model, loader, loss_fn, optimizer, device, vocab_size,max_ba
             progress_loss = 0.0
     return total_loss/total_tokens  
         
+
+
+def train(model,train_loader,valid_loader,loss_fn,optimizer,device, vocab_size,epochs,name):
+    train_losses = []
+    val_losses = []
+
+    for epoch in range(1,epochs+1):
+        train_loss = train_one_epoch(model,train_loader,loss_fn, optimizer,device,vocab_size)
+        val_loss = evaluate(model,valid_loader,loss_fn,device, vocab_size)
+        print(f"epoch {epoch}/{epochs} | train loss {train_loss:.3f} | valid loss {val_loss:.3f}")
+
+        train_losses.append(train_loss)
+        val_losses.append(val_loss)
+
+    torch.save(model.state_dict(),f"runs/{name}_model.pt")
+    with open(f"runs/{name}_history.json","w") as f:
+        json.dump({"train_loss": train_losses,"val_loss": val_losses},f)
+
         
-    
-    
-    
 
 if __name__ == "__main__":
+
+    torch.manual_seed(0)
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print("Device:", device)
 
-    train_loader,valid_loader,vocab_size = get_data("small_bpe", data_directory, 32)
+    train_loader,valid_loader,vocab_size = get_data("small_bpe",data_directory,32)
     model = Transformer(vocab_size=vocab_size,hidden_dim=256,seq_len=chunk_size,num_heads=4,forward_dim=1024,num_layers=2, dropout=0.1).to(device)
     loss_fn = nn.CrossEntropyLoss()
+    optimizer = torch.optim.AdamW(model.parameters(),lr=3e-4)
 
-    print("untrained valid loss:", evaluate(model,valid_loader,loss_fn,device,vocab_size))
-    print("random loss :", math.log(vocab_size))
-    
-    optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4)
-    start = time.time()
+    print("untrained valid loss:",evaluate(model,valid_loader,loss_fn,device,vocab_size),"|random loss:", math.log(vocab_size))
 
-    train_loss = train_one_epoch(model,train_loader,loss_fn,optimizer,device,vocab_size,max_batches=50)
-
-    seconds = time.time() - start
-
-    print(f"Average train loss over the first 50 batches = {train_loss:.3f}")
-    print(f"Time for 50 batches = {seconds:.1f}s")
-    print(f"Estimated time for one full epoch ({len(train_loader)} batches) = "f"{seconds * len(train_loader) / 50 / 60:.1f} minutes")
-    print(f"Validation loss after 50 steps = "f"{evaluate(model, valid_loader, loss_fn, device, vocab_size):.3f}")
+    train(model,train_loader,valid_loader,loss_fn,optimizer,device,vocab_size,epochs=20,name="trial_small_bpe")
 
 
 
