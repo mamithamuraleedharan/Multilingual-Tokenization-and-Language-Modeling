@@ -1,0 +1,5 @@
+Device: cuda
+char en.txt: loss/token 1.544| tokens/char 1.000 | BPC 2.227
+char tr.txt: loss/token 1.571| tokens/char 1.000 | BPC 2.267
+char zh.txt: loss/token 4.525| tokens/char 1.000 | BPC 6.529
+char OVERALL BPC : 3.674

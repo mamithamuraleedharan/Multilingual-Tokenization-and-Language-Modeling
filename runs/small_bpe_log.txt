@@ -1,0 +1,162 @@
+Device: cuda
+untrained valid loss: 7.779872435689624 | random loss: 7.600902459542082
+ batch 200/1461 loss: 6.688
+ batch 400/1461 loss: 5.948
+ batch 600/1461 loss: 5.427
+ batch 800/1461 loss: 5.176
+ batch 1000/1461 loss: 5.030
+ batch 1200/1461 loss: 4.943
+ batch 1400/1461 loss: 4.873
+epoch 1/20 | train loss 5.416 | valid loss 4.752
+ batch 200/1461 loss: 4.784
+ batch 400/1461 loss: 4.752
+ batch 600/1461 loss: 4.716
+ batch 800/1461 loss: 4.688
+ batch 1000/1461 loss: 4.645
+ batch 1200/1461 loss: 4.608
+ batch 1400/1461 loss: 4.585
+epoch 2/20 | train loss 4.677 | valid loss 4.478
+ batch 200/1461 loss: 4.528
+ batch 400/1461 loss: 4.502
+ batch 600/1461 loss: 4.484
+ batch 800/1461 loss: 4.462
+ batch 1000/1461 loss: 4.463
+ batch 1200/1461 loss: 4.428
+ batch 1400/1461 loss: 4.397
+epoch 3/20 | train loss 4.464 | valid loss 4.311
+ batch 200/1461 loss: 4.354
+ batch 400/1461 loss: 4.344
+ batch 600/1461 loss: 4.328
+ batch 800/1461 loss: 4.327
+ batch 1000/1461 loss: 4.321
+ batch 1200/1461 loss: 4.305
+ batch 1400/1461 loss: 4.302
+epoch 4/20 | train loss 4.324 | valid loss 4.196
+ batch 200/1461 loss: 4.234
+ batch 400/1461 loss: 4.229
+ batch 600/1461 loss: 4.234
+ batch 800/1461 loss: 4.230
+ batch 1000/1461 loss: 4.219
+ batch 1200/1461 loss: 4.213
+ batch 1400/1461 loss: 4.212
+epoch 5/20 | train loss 4.223 | valid loss 4.111
+ batch 200/1461 loss: 4.168
+ batch 400/1461 loss: 4.153
+ batch 600/1461 loss: 4.151
+ batch 800/1461 loss: 4.144
+ batch 1000/1461 loss: 4.142
+ batch 1200/1461 loss: 4.149
+ batch 1400/1461 loss: 4.131
+epoch 6/20 | train loss 4.147 | valid loss 4.050
+ batch 200/1461 loss: 4.098
+ batch 400/1461 loss: 4.090
+ batch 600/1461 loss: 4.100
+ batch 800/1461 loss: 4.094
+ batch 1000/1461 loss: 4.087
+ batch 1200/1461 loss: 4.082
+ batch 1400/1461 loss: 4.077
+epoch 7/20 | train loss 4.089 | valid loss 4.004
+ batch 200/1461 loss: 4.037
+ batch 400/1461 loss: 4.050
+ batch 600/1461 loss: 4.039
+ batch 800/1461 loss: 4.053
+ batch 1000/1461 loss: 4.036
+ batch 1200/1461 loss: 4.034
+ batch 1400/1461 loss: 4.042
+epoch 8/20 | train loss 4.042 | valid loss 3.970
+ batch 200/1461 loss: 4.004
+ batch 400/1461 loss: 4.005
+ batch 600/1461 loss: 4.012
+ batch 800/1461 loss: 4.005
+ batch 1000/1461 loss: 4.004
+ batch 1200/1461 loss: 3.995
+ batch 1400/1461 loss: 4.003
+epoch 9/20 | train loss 4.003 | valid loss 3.939
+ batch 200/1461 loss: 3.962
+ batch 400/1461 loss: 3.965
+ batch 600/1461 loss: 3.978
+ batch 800/1461 loss: 3.971
+ batch 1000/1461 loss: 3.977
+ batch 1200/1461 loss: 3.961
+ batch 1400/1461 loss: 3.967
+epoch 10/20 | train loss 3.969 | valid loss 3.914
+ batch 200/1461 loss: 3.941
+ batch 400/1461 loss: 3.940
+ batch 600/1461 loss: 3.937
+ batch 800/1461 loss: 3.940
+ batch 1000/1461 loss: 3.947
+ batch 1200/1461 loss: 3.940
+ batch 1400/1461 loss: 3.949
+epoch 11/20 | train loss 3.942 | valid loss 3.889
+ batch 200/1461 loss: 3.906
+ batch 400/1461 loss: 3.920
+ batch 600/1461 loss: 3.913
+ batch 800/1461 loss: 3.919
+ batch 1000/1461 loss: 3.924
+ batch 1200/1461 loss: 3.909
+ batch 1400/1461 loss: 3.922
+epoch 12/20 | train loss 3.916 | valid loss 3.873
+ batch 200/1461 loss: 3.877
+ batch 400/1461 loss: 3.877
+ batch 600/1461 loss: 3.892
+ batch 800/1461 loss: 3.900
+ batch 1000/1461 loss: 3.909
+ batch 1200/1461 loss: 3.895
+ batch 1400/1461 loss: 3.908
+epoch 13/20 | train loss 3.894 | valid loss 3.855
+ batch 200/1461 loss: 3.854
+ batch 400/1461 loss: 3.874
+ batch 600/1461 loss: 3.871
+ batch 800/1461 loss: 3.886
+ batch 1000/1461 loss: 3.876
+ batch 1200/1461 loss: 3.878
+ batch 1400/1461 loss: 3.879
+epoch 14/20 | train loss 3.874 | valid loss 3.840
+ batch 200/1461 loss: 3.847
+ batch 400/1461 loss: 3.858
+ batch 600/1461 loss: 3.857
+ batch 800/1461 loss: 3.847
+ batch 1000/1461 loss: 3.864
+ batch 1200/1461 loss: 3.864
+ batch 1400/1461 loss: 3.854
+epoch 15/20 | train loss 3.856 | valid loss 3.828
+ batch 200/1461 loss: 3.830
+ batch 400/1461 loss: 3.828
+ batch 600/1461 loss: 3.845
+ batch 800/1461 loss: 3.839
+ batch 1000/1461 loss: 3.840
+ batch 1200/1461 loss: 3.844
+ batch 1400/1461 loss: 3.848
+epoch 16/20 | train loss 3.839 | valid loss 3.815
+ batch 200/1461 loss: 3.807
+ batch 400/1461 loss: 3.812
+ batch 600/1461 loss: 3.825
+ batch 800/1461 loss: 3.845
+ batch 1000/1461 loss: 3.824
+ batch 1200/1461 loss: 3.824
+ batch 1400/1461 loss: 3.827
+epoch 17/20 | train loss 3.824 | valid loss 3.804
+ batch 200/1461 loss: 3.793
+ batch 400/1461 loss: 3.800
+ batch 600/1461 loss: 3.808
+ batch 800/1461 loss: 3.822
+ batch 1000/1461 loss: 3.811
+ batch 1200/1461 loss: 3.819
+ batch 1400/1461 loss: 3.818
+epoch 18/20 | train loss 3.810 | valid loss 3.793
+ batch 200/1461 loss: 3.785
+ batch 400/1461 loss: 3.786
+ batch 600/1461 loss: 3.797
+ batch 800/1461 loss: 3.802
+ batch 1000/1461 loss: 3.792
+ batch 1200/1461 loss: 3.804
+ batch 1400/1461 loss: 3.817
+epoch 19/20 | train loss 3.797 | valid loss 3.784
+ batch 200/1461 loss: 3.768
+ batch 400/1461 loss: 3.780
+ batch 600/1461 loss: 3.782
+ batch 800/1461 loss: 3.788
+ batch 1000/1461 loss: 3.788
+ batch 1200/1461 loss: 3.789
+ batch 1400/1461 loss: 3.797
+epoch 20/20 | train loss 3.785 | valid loss 3.775

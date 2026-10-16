@@ -1,0 +1,5 @@
+Device: cuda
+large_bpe en.txt: loss/token 4.659| tokens/char 0.308 | BPC 2.073
+large_bpe tr.txt: loss/token 4.822| tokens/char 0.308 | BPC 2.141
+large_bpe zh.txt: loss/token 5.667| tokens/char 0.812 | BPC 6.642
+large_bpe OVERALL BPC : 3.619
