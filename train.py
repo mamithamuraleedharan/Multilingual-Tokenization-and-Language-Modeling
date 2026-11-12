@@ -10,8 +10,7 @@ import time
 import json
 import argparse
 
-data_directory = Path(__file__).parent/"Data"
-# data_directory = Path("/srv/data/lt2326-h26/a1")
+data_directory = Path("/srv/data/lt2326-h26/a1")
 file_names = ["en.txt","tr.txt","zh.txt"]
 chunk_size = 128
 BPE_directory = Path(__file__).parent / "bpe_data"

@@ -42,7 +42,9 @@ def char_decode(id_list,id_ch_dict):
 # main
 
 file_names = ["en.txt","tr.txt","zh.txt"]
-file_path = Path("Data/train/")
+#file_path = Path("Data/train/")
+file_path = Path("/srv/data/lt2326-h26/a1/train/")
+
 ch_id_dict,id_ch_dict = build_char_vocab(file_names,file_path)
 
 """

@@ -20,7 +20,8 @@ def bpe_load_tokenizer(save_path):
 #main
 
 
-file_name = "Data/tokenizer/balanced.txt"
+#file_name = "Data/tokenizer/balanced.txt"
+file_name = "/srv/data/lt2326-h26/a1/tokenizer/balanced.txt"
 small_save_path = "bpe_data/small_tokenizer.json"
 large_save_path = "bpe_data/large_tokenizer.json"
 small_vocab_size = 2000
